@@ -1,9 +1,12 @@
 import { StyledHero } from "./style";
-import { CTA } from "./../CTA";
+import CTA from "../CTA";
 
-const Hero = ({ bImg, title, text }) => {
+import backgroundImg from "../../../assets/bank-tree.jpeg";
+
+const Hero = ({ srOnly, title, text }) => {
   return (
-    <StyledHero backgroundImage={bImg}>
+    <StyledHero backgroundImage={backgroundImg}>
+      <h2 className="sr-only">{srOnly}</h2>
       <CTA title={title} text={text} />
     </StyledHero>
   );

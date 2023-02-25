@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-import { Navbar } from "../../components/Navbar";
-import { HomePage } from "../../containers/HomePage/HomePage";
-import { SignInPage } from "../../containers/SignInPage";
-import { UserPage } from "../../containers/UserPage";
-import { TransactionsPage } from "../../containers/TransactionsPage";
-import { Footer } from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import HomePage from "../../containers/HomePage";
+import SignInPage from "../../containers/SignInPage";
+import UserPage from "../../containers/UserPage";
+import TransactionsPage from "../../containers/TransactionsPage";
+import Footer from "../../components/Footer";
 
 const Layout = () => {
   return (
