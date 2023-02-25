@@ -1,3 +1,5 @@
 import styled from "styled-components";
 
-export const StyledSignin = styled.div``;
+export const StyledSignin = styled.main`
+  flex: 1;
+`;

@@ -1,8 +1,8 @@
 import { StyledFeature } from "./style";
-const Feature = ({ icon, title, text }) => {
+const Feature = ({ icon, alt, title, text }) => {
   return (
     <StyledFeature>
-      <img src={icon} alt="" />
+      <img src={icon} alt={alt} />
       <h3>{title}</h3>
       <p>{text}</p>
     </StyledFeature>

@@ -1,4 +1,4 @@
-import { StyledTransactionsPage } from "./Style";
+import { StyledTransactionsPage } from "./style";
 
 const TransactionsPage = () => {
   return <StyledTransactionsPage>TransactionsPage</StyledTransactionsPage>;
