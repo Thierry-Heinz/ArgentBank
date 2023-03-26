@@ -6,16 +6,12 @@ const profileSlice = createSlice({
   reducers: {
     setProfile: (state, action) => {
       const { firstName, lastName } = action.payload;
-      console.log("reducer " + firstName);
-      console.log("reducer " + lastName);
       state.firstName = firstName;
       state.lastName = lastName;
     },
     unsetProfile: (state) => {
       state.firstName = null;
       state.lastName = null;
-      console.log("reducer " + state.firstName);
-      console.log("reducer " + state.lastName);
     },
   },
 });

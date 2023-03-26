@@ -7,10 +7,6 @@ import { setProfile } from "../../features/profile/profileSlice";
 const RequireAuth = () => {
   const token = useSelector(selectCurrentToken);
   const location = useLocation();
-  const dispatch = useDispatch();
-
-  console.log(token);
-  console.log(location);
 
   return token ? (
     <Outlet />

@@ -1,15 +1,11 @@
-import { Link } from "react-router-dom";
 import { StyledUserPage } from "./style";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { useGetProfileMutation } from "../../features/profile/profileApiSlice";
-import {
-  selectCurrentFirstName,
-  selectCurrentLastName,
-} from "../../features/profile/profileSlice";
+
 import { setProfile } from "../../features/profile/profileSlice";
 
 import Header from "../../components/User/Header";
@@ -26,7 +22,6 @@ const UserPage = () => {
     const fetchData = async () => {
       const data = await profile().unwrap();
 
-      console.log(data);
       if (data) {
         const userData = {
           firstName: data.body.firstName,

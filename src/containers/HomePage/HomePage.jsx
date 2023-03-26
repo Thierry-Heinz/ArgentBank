@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 
 const HomePage = () => {
   const token = useSelector(selectCurrentToken);
-  console.log(token);
   return (
     <Main>
       <Hero

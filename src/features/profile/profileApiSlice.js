@@ -10,8 +10,8 @@ export const profileApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    setProfile: builder.query({
-      query: ({ userData }) => ({
+    updateProfile: builder.mutation({
+      query: (userData) => ({
         url: "/user/profile",
         method: "PUT",
         body: { ...userData },
@@ -21,4 +21,4 @@ export const profileApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useGetProfileMutation } = profileApiSlice;
-// export const { userSetProfileQuery } = profileApiSlice;
+export const { useUpdateProfileMutation } = profileApiSlice;

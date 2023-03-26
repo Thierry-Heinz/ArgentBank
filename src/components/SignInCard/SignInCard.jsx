@@ -1,17 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { setCredentials } from "../../features/auth/authSlice.js";
 import { useLoginMutation } from "../../features/auth/authApiSlice.js";
 
-import { selectCurrentFirstName } from "../../features/profile/profileSlice";
-
 import { StyledSignInCard } from "./style.js";
 
-import { Link } from "react-router-dom";
-
-import { faUserCircle, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SignInCard = () => {
@@ -36,7 +32,6 @@ const SignInCard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
     try {
       const userData = await login({ email, password }).unwrap();
 
