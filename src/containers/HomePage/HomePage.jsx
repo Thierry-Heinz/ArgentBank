@@ -1,4 +1,5 @@
 import { Main, Features } from "./style";
+import { selectCurrentToken } from "../../features/auth/authSlice";
 
 import chatIcon from "../../assets/icon-chat.png";
 import moneyIcon from "../../assets/icon-money.png";
@@ -7,8 +8,11 @@ import securityIcon from "../../assets/icon-security.png";
 // Importing components
 
 import { Hero, Feature } from "../../components/Marketing";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const token = useSelector(selectCurrentToken);
+  console.log(token);
   return (
     <Main>
       <Hero

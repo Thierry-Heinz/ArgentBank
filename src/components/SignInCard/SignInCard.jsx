@@ -1,8 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import { setCredentials } from "../../features/auth/authSlice.js";
 import { useLoginMutation } from "../../features/auth/authApiSlice.js";
+
+import { selectCurrentFirstName } from "../../features/profile/profileSlice";
 
 import { StyledSignInCard } from "./style.js";
 
@@ -19,6 +22,9 @@ const SignInCard = () => {
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
+  const firstName = useSelector(selectCurrentFirstName);
+  console.log(firstName);
+
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
 
@@ -32,14 +38,17 @@ const SignInCard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log(email, password);
     try {
       const userData = await login({ email, password }).unwrap();
+
       // destructuring userData from the store and saving the user local state variable ???
       const token = userData.body.token;
       dispatch(setCredentials({ ...userData, token }));
       setEmail("");
       setPassword("");
-      navigate("/welcome");
+      navigate("/profile");
     } catch (err) {
       //error handling
       if (!err?.originalStatus) {

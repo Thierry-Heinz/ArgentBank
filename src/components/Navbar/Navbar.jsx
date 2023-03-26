@@ -1,4 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectCurrentFirstName,
+  unsetProfile,
+} from "../../features/profile/profileSlice";
+import { selectCurrentToken, logOut } from "../../features/auth/authSlice";
+
+import { useNavigate } from "react-router-dom";
 
 import {
   StyledNavbar,
@@ -14,6 +23,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userFirstName, setUserFirstName] = useState("");
+
+  const firstName = useSelector(selectCurrentFirstName);
+  const token = useSelector(selectCurrentToken);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const prevFirstName = useRef();
+
+  useEffect(() => {
+    if (firstName !== prevFirstName) {
+      setUserFirstName(firstName);
+    }
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [firstName, token]);
+
+  const handleLogOut = () => {
+    const test = { test: "test" };
+    dispatch(logOut({ ...test, test }));
+    dispatch(unsetProfile());
+    setUserFirstName("");
+    setIsLoggedIn(false);
+    navigate("/");
+  };
 
   return (
     <StyledNavbar>
@@ -33,11 +71,11 @@ const Navbar = () => {
         <ButtonsGroup>
           <StyledNavLink>
             <FontAwesomeIcon icon={faUserCircle} />
-            Sign In
+            {userFirstName}
           </StyledNavLink>
-          <StyledNavLink>
+          <StyledNavLink onClick={handleLogOut}>
             <FontAwesomeIcon icon={faSignOut} />
-            Sign In
+            Sign Out
           </StyledNavLink>
         </ButtonsGroup>
       )}
