@@ -31,10 +31,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const prevFirstName = useRef();
-
   useEffect(() => {
-    if (firstName !== prevFirstName) {
+    if (firstName) {
       setUserFirstName(firstName);
     }
     if (token) {
@@ -45,8 +43,7 @@ const Navbar = () => {
   }, [firstName, token]);
 
   const handleLogOut = () => {
-    const test = { test: "test" };
-    dispatch(logOut({ ...test, test }));
+    dispatch(logOut());
     dispatch(unsetProfile());
     setUserFirstName("");
     setIsLoggedIn(false);

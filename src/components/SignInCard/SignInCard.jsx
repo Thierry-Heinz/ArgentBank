@@ -22,9 +22,6 @@ const SignInCard = () => {
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
-  const firstName = useSelector(selectCurrentFirstName);
-  console.log(firstName);
-
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
 
@@ -45,7 +42,9 @@ const SignInCard = () => {
 
       // destructuring userData from the store and saving the user local state variable ???
       const token = userData.body.token;
-      dispatch(setCredentials({ ...userData, token }));
+      if (token) {
+        dispatch(setCredentials({ ...userData, token }));
+      }
       setEmail("");
       setPassword("");
       navigate("/profile");
