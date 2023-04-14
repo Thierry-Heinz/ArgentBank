@@ -1,32 +1,24 @@
+import { useSelector } from "react-redux";
 import { StyledAccount } from "./style.js";
 
-const data = [
-  {
-    title: "Argent Bank Checking (x8349)",
-    amount: "$2,082.79",
-    description: "Available Balance",
-  },
-  {
-    title: "Argent Bank Savings (x6712)",
-    amount: "$10,928.42",
-    description: "Available Balance",
-  },
-  {
-    title: "Argent Bank Credit Card (x8349)",
-    amount: "$184.30",
-    description: "Current Balance",
-  },
-];
+const formatNumber = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+});
 
 const Account = () => {
+  const userAccounts = useSelector((state) => state.accounts);
   return (
     <>
       <h2 className="sr-only">Accounts</h2>
-      {data.map((account, i) => (
-        <StyledAccount key={i}>
+      {userAccounts.map((account, i) => (
+        <StyledAccount key={`${i}-${account.title}`}>
           <div className="account-content-wrapper">
             <h3 className="acccount-title">{account.title}</h3>
-            <p className="account-amount">{account.amount}</p>
+            <p className="account-amount">
+              {formatNumber.format(account.amount)}
+            </p>
             <p className="account-amount-description">{account.description}</p>
           </div>
           <div className="account-content-wrapper cta">

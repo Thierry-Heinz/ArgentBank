@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -66,7 +66,7 @@ const Navbar = () => {
         </ButtonsGroup>
       ) : (
         <ButtonsGroup>
-          <StyledNavLink>
+          <StyledNavLink to="profile">
             <FontAwesomeIcon icon={faUserCircle} />
             {userFirstName}
           </StyledNavLink>

@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from "../../containers/HomePage";
 import UserPage from "../../containers/UserPage";
-import TransactionsPage from "../../containers/TransactionsPage";
 
 import SignInPage from "../../containers/SignInPage";
 
 import RequireAuth from "../../features/auth/RequireAuth";
 import Layout from "../Layout";
+import ErrorPage from "../../containers/ErrorPage/ErrorPage";
 
 const Router = () => {
   return (
@@ -21,8 +21,10 @@ const Router = () => {
           {/* protected routes */}
           <Route element={<RequireAuth />}>
             <Route path="profile" element={<UserPage />} />
-            <Route path="transactions" element={<TransactionsPage />} />
           </Route>
+
+          {/* Error Page *wildcard */}
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
