@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Initial state for the accounts store
 const initialState = [
   {
     id: 1589,
@@ -21,6 +22,7 @@ const initialState = [
   },
 ];
 
+//creating the slice for the accounts reducer
 const accountsSlice = createSlice({
   name: "accounts",
   initialState,
@@ -28,5 +30,3 @@ const accountsSlice = createSlice({
 });
 
 export default accountsSlice.reducer;
-
-export const selectCurrentAccounts = (state) => state.accounts.userAccounts;

@@ -1,12 +1,8 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 
@@ -17,7 +13,9 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+    {/* Wrapping the app with the Redux provider for the store consumption */}
     <Provider store={store}>
+      {/* Calling the router with the navigation logic and user token verification */}
       <Router />
     </Provider>
   </React.StrictMode>

@@ -1,25 +1,19 @@
 import { StyledUserPage } from "./style";
-
 import { useEffect } from "react";
-
 import { useDispatch } from "react-redux";
-
 import { useGetProfileMutation } from "../../features/profile/profileApiSlice";
-
 import { setProfile } from "../../features/profile/profileSlice";
-
 import Header from "../../components/User/Header";
 import Account from "../../components/User/Account";
 
 const UserPage = () => {
-  // const userFirstName = useSelector(selectCurrentFirstName);
-  // const userLastName = useSelector(selectCurrentLastName);
-
+  // setting the "custom hook" to get the profile info
   const [profile, { isLoading }] = useGetProfileMutation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
+      // getting the profile data from the profile api call
       const data = await profile().unwrap();
 
       if (data) {
@@ -28,6 +22,7 @@ const UserPage = () => {
           lastName: data.body.lastName,
         };
 
+        // storing the user data
         dispatch(setProfile({ ...userData, userData }));
       }
     };

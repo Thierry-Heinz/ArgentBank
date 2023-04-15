@@ -8,6 +8,7 @@ const formatNumber = new Intl.NumberFormat("en-US", {
 });
 
 const Account = () => {
+  // get the account state in tha global store
   const userAccounts = useSelector((state) => state.accounts);
   return (
     <>

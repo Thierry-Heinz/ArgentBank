@@ -25,6 +25,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userFirstName, setUserFirstName] = useState("");
 
+  // get the user firstName and the token from the store
   const firstName = useSelector(selectCurrentFirstName);
   const token = useSelector(selectCurrentToken);
 
@@ -42,11 +43,15 @@ const Navbar = () => {
     }
   }, [firstName, token]);
 
+  // when clicking on the logout button
   const handleLogOut = () => {
+    // call the logout function to clear token
     dispatch(logOut());
+    // call the unsetProfile to clear the profile info
     dispatch(unsetProfile());
     setUserFirstName("");
     setIsLoggedIn(false);
+    // and navigate to HomePage
     navigate("/");
   };
 

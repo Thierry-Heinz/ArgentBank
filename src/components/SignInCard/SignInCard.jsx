@@ -18,7 +18,9 @@ const SignInCard = () => {
   const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
+  // set the login function using the login "custom hook"
   const [login, { isLoading }] = useLoginMutation();
+  // setting the dispatch for future actions call
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,18 +35,21 @@ const SignInCard = () => {
     e.preventDefault();
 
     try {
+      // send the login credentials as payload thru the authApiSlice
       const userData = await login({ email, password }).unwrap();
 
-      // destructuring userData from the store and saving the user local state variable ???
+      //  get the response token if the http call is successful
       const token = userData.body.token;
       if (token) {
-        dispatch(setCredentials({ ...userData, token }));
+        // call the action to store the token
+        dispatch(setCredentials({ token }));
       }
+      // empty the fields and redirect to profile page
       setEmail("");
       setPassword("");
       navigate("/profile");
     } catch (err) {
-      //error handling
+      //error handling depending on the response of the api call
       if (!err?.originalStatus) {
         setErrMsg("No server Response");
       } else if (err.originalStatus?.status === 400) {

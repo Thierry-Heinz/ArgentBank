@@ -1,13 +1,15 @@
 import { useLocation, Navigate, Outlet } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./authSlice";
-import { useGetProfileQuery } from "../../features/profile/profileApiSlice";
-import { setProfile } from "../../features/profile/profileSlice";
 
+// Check if th token is set, if not redirect to HomePage
 const RequireAuth = () => {
+  //get the token using the useSelector hook
   const token = useSelector(selectCurrentToken);
+  // get the location of the user (react-router)
   const location = useLocation();
 
+  // if token is true load display the outlet (and the navigated page or component) else redirect to homepage
   return token ? (
     <Outlet />
   ) : (

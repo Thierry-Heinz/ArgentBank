@@ -13,17 +13,18 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Set the Layout with the <Outlet/> */}
         <Route path="/" element={<Layout />}>
           {/* public routes */}
           <Route index element={<HomePage />} />
           <Route path="signin" element={<SignInPage />} />
 
-          {/* protected routes */}
+          {/* protected routes get RequireAuth  */}
           <Route element={<RequireAuth />}>
             <Route path="profile" element={<UserPage />} />
           </Route>
 
-          {/* Error Page *wildcard */}
+          {/* Error Page * wildcard */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
