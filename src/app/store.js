@@ -13,7 +13,7 @@ export const store = configureStore({
     accounts: accountReducer,
   },
 
-  // defining a middleware, like an interceptor function (in this instance apiSplice will set the token in the headers of the baseQuery)
+  // customizeing the default middleware, like an interceptor function (in this instance apiSplice will set the token in the headers of the baseQuery)
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
   devTools: true,

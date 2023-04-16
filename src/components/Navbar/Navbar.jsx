@@ -64,7 +64,7 @@ const Navbar = () => {
 
       {!isLoggedIn ? (
         <ButtonsGroup>
-          <StyledNavLink to="signin">
+          <StyledNavLink to="login">
             <FontAwesomeIcon icon={faUserCircle} />
             Sign In
           </StyledNavLink>

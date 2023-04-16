@@ -19,7 +19,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-// create the api endpoint
+// Redux toolkit Query defining the api endpoint
 export const apiSlice = createApi({
   baseQuery,
   endpoints: (builder) => ({}),

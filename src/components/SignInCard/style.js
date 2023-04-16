@@ -46,4 +46,7 @@ export const StyledSignInCard = styled.section`
     background-color: #00bc77;
     color: #fff;
   }
+  .errMsg {
+    color: red;
+  }
 `;

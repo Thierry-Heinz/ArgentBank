@@ -49,15 +49,10 @@ const SignInCard = () => {
       setPassword("");
       navigate("/profile");
     } catch (err) {
+      console.log(err);
       //error handling depending on the response of the api call
-      if (!err?.originalStatus) {
-        setErrMsg("No server Response");
-      } else if (err.originalStatus?.status === 400) {
-        setErrMsg("Missing Username or Password");
-      } else if (err.originalStatus?.status === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login failed");
+      if (err.status) {
+        setErrMsg(err.data.message);
       }
       errRef.current.focus();
     }

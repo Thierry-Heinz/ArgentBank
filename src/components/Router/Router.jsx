@@ -17,7 +17,7 @@ const Router = () => {
         <Route path="/" element={<Layout />}>
           {/* public routes */}
           <Route index element={<HomePage />} />
-          <Route path="signin" element={<SignInPage />} />
+          <Route path="login" element={<SignInPage />} />
 
           {/* protected routes get RequireAuth  */}
           <Route element={<RequireAuth />}>
